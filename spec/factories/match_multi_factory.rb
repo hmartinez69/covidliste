@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :match_multi, class: "Match" do
     association :vaccination_center
 
-    user { create(:user) }
-    campaign { create(:campaign, available_doses: 1) }
+    user
+    campaign
 
     trait :confirmed do
       confirmed_at { Time.zone.now }

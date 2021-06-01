@@ -28,7 +28,7 @@ class Match < ApplicationRecord
 
   validates :distance_in_meters, numericality: {greater_than_or_equal_to: 0, only_integer: true}, allow_nil: true
   validate :match_throttling, on: :create
-  validates :user_id, uniqueness: {scope: :campaign_id}
+  # validates :user_id, uniqueness: {scope: :campaign_id}
   before_create :save_user_info
   before_save :cache_distance_in_meters_between_user_and_vaccination_center
   after_create_commit :notify
@@ -120,13 +120,13 @@ class Match < ApplicationRecord
 
   def match_throttling
     return unless user
-    matches_count = user.matches.where("created_at >= ?", THROTTLING_INTERVAL.ago).count
-    errors.add(:base, "Too many matches for this user") if matches_count >= THROTTLING_RATE
-    if (campaign.vaccine_type == Vaccine::Brands::ASTRAZENECA) || (campaign.vaccine_type == Vaccine::Brands::JANSSEN)
-      if matches_count >= 1
-        errors.add(:base, "Too many matches for this user with this vaccine")
-      end
-    end
+    # matches_count = user.matches.where("created_at >= ?", THROTTLING_INTERVAL.ago).count
+    # errors.add(:base, "Too many matches for this user") if matches_count >= THROTTLING_RATE
+    # if (campaign.vaccine_type == Vaccine::Brands::ASTRAZENECA) || (campaign.vaccine_type == Vaccine::Brands::JANSSEN)
+    #   if matches_count >= 1
+    #     errors.add(:base, "Too many matches for this user with this vaccine")
+    #   end
+    # end
   end
 
   def cache_distance_in_meters_between_user_and_vaccination_center

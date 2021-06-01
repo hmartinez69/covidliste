@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :match do
-    association :user
+    user
     association :campaign
     association :vaccination_center
 

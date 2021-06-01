@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :slot_alert do
-    association :user
+    user
     association :vmd_slot
     sent_at { nil }
     clicked_at { nil }

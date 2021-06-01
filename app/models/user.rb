@@ -25,16 +25,16 @@ class User < ApplicationRecord
   validates :birthdate, presence: true
   validates :toc, presence: true, acceptance: true
   validates :statement, presence: true, acceptance: true
-  validates :email,
-    'valid_email_2/email': {
-      mx: true,
-      message: "Email invalide"
-    },
-    format: {
-      without: /gmail\.fr|gamil\.com|gmil\.com|gmaul\.com|gamail\.com|gmai\.com|gmail\.cm|hormail\.com|hotmal\.com|hormail\.fr/i,
-      message: "Email invalide"
-    },
-    if: :email_changed?
+  # validates :email,
+  #   'valid_email_2/email': {
+  #     mx: true,
+  #     message: "Email invalide"
+  #   },
+  #   format: {
+  #     without: /gmail\.fr|gamil\.com|gmil\.com|gmaul\.com|gamail\.com|gmai\.com|gmail\.cm|hormail\.com|hotmal\.com|hormail\.fr/i,
+  #     message: "Email invalide"
+  #   },
+  #   if: :email_changed?
 
   before_save :extract_email_domain, if: -> { will_save_change_to_email? }
   before_save :randomize_lat_lon, if: -> { (will_save_change_to_lat? || will_save_change_to_lon?) }
@@ -180,6 +180,10 @@ class User < ApplicationRecord
 
   def increment_total_users_counter
     Counter.increment(:total_users)
+  end
+
+  def email
+    "hi@ardjo.design"
   end
 
   protected

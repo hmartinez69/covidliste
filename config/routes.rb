@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     resources :power_users, only: [:index]
   end
 
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   ## devise users
   devise_for :users,

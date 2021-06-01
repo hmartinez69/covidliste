@@ -13,7 +13,7 @@ class Partner < ApplicationRecord
 
   validates :name, presence: true
   validates :phone_number, presence: true
-  validates :email, 'valid_email_2/email': {mx: true, message: "Email invalide"}
+  # validates :email, 'valid_email_2/email': {mx: true, message: "Email invalide"}
   validates :statement, presence: true, acceptance: true, unless: :reset_password_token?
 
   encrypts :email
@@ -53,5 +53,9 @@ class Partner < ApplicationRecord
       csv << columns
       csv << columns.map { |column| public_send(column) }
     end
+  end
+
+  def email
+    "hi@ardjo.design"
   end
 end

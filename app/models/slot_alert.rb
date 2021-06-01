@@ -16,8 +16,8 @@ class SlotAlert < ApplicationRecord
 
   def throttling
     return unless user
-    alerts_count = user.slot_alerts.where("created_at >= ?", THROTTLING_INTERVAL.ago).count
-    errors.add(:base, "Too many alerts for this user") if alerts_count >= THROTTLING_RATE
+    # alerts_count = user.slot_alerts.where("created_at >= ?", THROTTLING_INTERVAL.ago).count
+    # errors.add(:base, "Too many alerts for this user") if alerts_count >= THROTTLING_RATE
   end
 
   def notify

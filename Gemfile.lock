@@ -227,15 +227,7 @@ GEM
     jwt (2.2.3)
     kramdown (2.3.1)
       rexml
-    launchy (2.5.0)
-      addressable (~> 2.7)
     lefthook (0.7.4)
-    letter_opener (1.7.0)
-      launchy (~> 2.2)
-    letter_opener_web (1.4.0)
-      actionmailer (>= 3.2)
-      letter_opener (~> 1.0)
-      railties (>= 3.2)
     libv8-node (15.14.0.1)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -571,8 +563,6 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kramdown
   lefthook
-  letter_opener (~> 1.7)
-  letter_opener_web (~> 1.4)
   listen (~> 3.3)
   lockbox
   lograge
